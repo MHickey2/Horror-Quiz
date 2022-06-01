@@ -1,0 +1,48 @@
+body {
+   background-image: url("/assets/images/asylum.jpg");
+   background-color: #cccccc;
+}
+
+.heading {
+    text-align: center;
+    font-size: 2.2rem;
+    color: white;
+    font-family: 'Creepster', cursive;
+    font-size: 72px;
+  background: -webkit-linear-gradient(red, white);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.center {
+    text-align: center;
+    width: 50%;
+    color: white;
+    font-size: 130%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(255,0,0, 0.4);
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.game-level-buttons {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+#beginner-button, #advanced-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;  
+    background-color: red;
+    width: 120px;
+    height: 40px;
+    color: white;
+    font-size: 120%;
+    text-align: center;
+    border-radius: 15px;
+}
+
