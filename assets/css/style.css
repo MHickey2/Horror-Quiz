@@ -1,7 +1,16 @@
 body {
    background-image: url("/assets/images/asylum.jpg");
    background-color: #cccccc;
+   font-size: 62.5%;
+   box-sizing: border-box;
+   color: #313131;
+   justify-content: center;
+   align-items: center;
+   width: 100vw;
+   height: 100vw;
+
 }
+
 
 #welcome {
     color: white;
@@ -20,7 +29,7 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.center {
+.center-message {
     text-align: center;
     width: 50%;
     color: white;
@@ -39,7 +48,13 @@ body {
     margin-right: auto;    
 }
 
-#beginner-button, #advanced-button {
+.controls {
+    display: flex;
+    justify-content: center;
+    align-content: center;   
+}
+
+#beginner-button, #advanced-button, #start-btn, #next-btn {
     display: block;
     margin-left: auto;
     margin-right: auto;  
@@ -52,3 +67,108 @@ body {
     border-radius: 15px;
 }
 
+.btn{
+        font-size: 3rem;
+        padding: 1rem 0;
+        width: 20rem;
+        text-align: center;
+        border: 0.1rem solid #56a5eb;
+        margin-bottom: 1rem;
+        text-decoration: none;
+        color: white;
+        background-color: white;
+      
+}
+
+#beginner-button:hover, #advanced-button:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+  }
+  
+  #beginner-button[disabled]:hover, #advanced-button[disabled]:hover {
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .center {
+        text-align: center;
+        width: 50%;
+        color: white;
+        font-size: 1.5rem;
+        margin-top: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+  }
+
+  .choice-container {
+      height: 150px;
+      width: 500px;
+      border: 5px solid white;
+      font-size: 1.4rem;
+      padding: 25px;
+      margin: 15px;
+      box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+      cursor:pointer;
+      vertical-align:middle; 
+      background-color: rgba(255,255,255, 0.3); 
+      
+  }
+
+  .choice-container:hover{
+      color: #56a5eb;
+  }
+
+  .choice-container:active {
+    background-color: lightgreen;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+    .choice-container:focus {
+    background: linear-gradient(#152B40, #152B40);
+    color: green;
+    }
+
+    .choice-container:selected{
+        background: linear-gradient(#152B40, #152B40);
+        color: green;
+        }
+
+  .main-container {
+    display: flex;
+    flex-direction: row;    
+    margin-left: auto;
+    margin-right: auto;
+       
+  }
+
+  .question-panel {
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: rgba(255,255,255, 0.5); 
+    box-shadow: 0 0 5px 1px;
+    padding: 10px;
+  }
+
+   .hide {
+       display: none;
+   }
+
+  .choice-prefix {
+      /*padding: 1.5rem, 2rem;*/
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+  }
+
+  .choice-text {
+      font-size: 1.3rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+ 

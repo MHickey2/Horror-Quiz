@@ -1,4 +1,6 @@
+alert("this is a test message")
 
+//Username for the game
 
 var username = prompt("Please enter your username: ");
             if (username != null) {
@@ -6,65 +8,35 @@ var username = prompt("Please enter your username: ");
         "Welcome, " + username + "!";
     }
    
-function beginnerGame()  {
-        document.getElementById("beginner-button").addEventListener("click", startBeginnerGame);
-        alert("Start Beginner Game!")
-     
-    
-    //function startBeginnerGame() {
-     //   alert("Start Beginner Game!")
-     
-    //}
-}
-
-function advancedGame() {
-        document.getElementById("advanced-button").addEventListener("click", startAdvancedGame);
-        alert("Start Advanced Game!")
-    
-    //function startAdvancedGame(){
-    //    alert("Start Advanced Game!")
-    //}  
-}  
+//Select level of game to be played
   
-   /* let buttons = document.getElementsByTagName("button");
+    let buttons = document.getElementsByTagName("button");
         
     
         for (let button of buttons) {
-            button.addEventListener("click", function() {
+            button.addEventListener ("click", function(){
                 if (this.getAttribute("data-type") === "selection1") {
-                    alert("Start Beginner Game!");
-                } 
-                else (this.getAttribute("data-type") === "selection2") {
-                    alert("Start Advanced Game!");
-            }    
-       
-    
-   
-    
-    var username = prompt("Please enter your username: ");
-        if (username != null) {
-        document.getElementById("welcome").innerText =
-        "Welcome, " + username + "!";
-    }
-/* 
-
-function beginnerGame()  {
-    document.getElementById("beginner-button").addEventListener("click", startBeginnerGame);
-
-function startBeginnerGame() {
-    alert("Start Beginner Game!")
- 
+                    alert("Start Beginner Game!")
+                } else (this.getAttribute("data-type") === "selection1"); {
+                    alert("Start Advanced Game!")
+        }
+    })
 }
 
-}  
+const startButton = document.getElementById("start-btn")
 
-function advancedGame() {
-    document.getElementById("advanced-button").addEventListener("click", startAdvancedGame);
+startButton.addEventListener("click", startGame)
 
-function startAdvancedGame(){
+function startGame(){
+    console.log("starting game!")
 
 }
 
+
+function selectNextQuestion(){
+
 }
-*/
-        
+
+function selectAnswer(){
+
+}
