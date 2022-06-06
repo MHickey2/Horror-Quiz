@@ -119,22 +119,22 @@ body {
   }
 
   .choice-container:hover{
-      color: #56a5eb;
+      color: goldenrod;
   }
 
   .choice-container:active {
-    background-color: lightgreen;
+    background-color: grey;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
 }
 
     .choice-container:focus {
     background: linear-gradient(#152B40, #152B40);
-    color: green;
+    color: grey;
     }
 
     .choice-container:selected{
         background: linear-gradient(#152B40, #152B40);
-        color: green;
+        color: darkolivegreen;
         }
 
   .main-container {
@@ -172,3 +172,24 @@ body {
       font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
  
+
+  #content {
+      color: white;
+      font-size: 1rem;
+      width: 50%;
+  }
+
+  #category {
+      color: white;
+      text-align: none;
+      text-align: left;
+      font-weight: bold;
+      font-size: 110%
+  }
+
+  #difficulty {
+    text-align: none;
+      text-align: right;
+      font-size: 100%;
+      color: blue;
+  }
