@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- font awesome and google fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,49 +15,66 @@
     <title>Advanced Game - Play</title>
     
 </head>
-
 <body>
-    <h1 class="heading">Begin Quiz</h1>
-    <p" class="center">You have to answer 10 questions in the fastest time</p>
+    <h1 class="heading">Quiz Express</h1>
+    <p" class="center">Select your Quiz Category</p>
 
-
-    </div>
+<section class="gameSelectionChoices"></section>
+        <h4>Beginner level</h4>
+            <button data-type="selection1" id="gamechoice1">Lucky Dip</button>
+            <button data-type="selection2" id="gamechoice2">Movies</button>
+            <button data-type="selection3" id="gamechoice3">Television</button>
+            <button data-type="selection4" id="gamechoice4">Music</button>
+        <h4>Hard level</h4>            
+            <button data-type="selection5" id="gamechoice5">Lucky Dip</button>
+            <button data-type="selection6" id="gamechoice6">Movies</button>
+            <button data-type="selection5" id="gamechoice5">Television</button>
+            <button data-type="selection6" id="gamechoice6">Music</button>
+</section>
+    <br/>
     <div class="controls">
         <btn id="start-btn" class="start-btn" onclick="startGame()" data-type="start">Start</div>
        <!--<btn id="next-btn" class="next-btn hide">Next</div>-->
-
-        <p>You have: <span id=${time-keeper}></span> seconds remaining!</p>
-        
     </div>
 
-    <div id="content">
 
-    </div>
 
-<section>
-  <p id="category"></p>
-  
-  <p id="difficulty"></p>
+    <div id="hidden">
+     <p><i class="fa-solid fa-timer"></i>You have: <span id="time-keeper"></span> seconds remaining!</p>
+     
+     
 
+  <div class="informationForQuestion">
+  <p id="category" class="center"></p>  
+  <p id="difficulty" class="center"></p>
+  </div>
+  <br/>
   
     <div class="question-container">
-          <h2 id="question"></h2>
+          <h3 id="question"></h3>
     </div>
 
   <div class="question-panel"> 
-   
+    <div class="main-container"> 
   <button id="answer1" class="choice-container"></button>        
   <button id="answer2" class="choice-container"></button>
+  </div>
+  <div class="main-container">
   <button id="answer3" class="choice-container"></button>
   <button id="answer4" class="choice-container"></button>
   </div> 
+  </div>
 
-  </section>
+  
 
   <div class="score-area">
     <p class="scores">Correct Answers <span id="score">0</span></p>
     <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>
   </div>
+
+
+</div>
+  </body>
 
     <script src="assets/js/script1.js"></script>
 </body>

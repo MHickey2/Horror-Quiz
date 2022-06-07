@@ -29,14 +29,15 @@
 let startButton = document.getElementById("start-btn")
 
 startButton.addEventListener("click", startGame)
-//startButton.addEventListener("click", updateTimer)
+startButton.addEventListener("click", updateTimer)
 
 var timer; 
 var timeLeft = 60; 
-
 timer = setInterval(updateTimer, 1000);
+         updateTimer();
 
-const newLocal = $('#timer').html(timeLeft);
+
+
 //shuffledAnswers = quiz.answers.sort(Math.random - .5)
 
 
@@ -44,15 +45,28 @@ const newLocal = $('#timer').html(timeLeft);
 function updateTimer() {
     timeLeft = timeLeft - 1;
     if(timeLeft >= 0)
-    document.getElementById("time-keeper").innerHTML = "timeLeft"
+    document.getElementById("time-keeper").innerHTML = timeLeft
+    //restartTimer()
+}
+
+ //restartTimer = clearInterval(this.interval);
+    //    timer = setInterval(updateTimer, 1000);
+     //           updateTimer();       
+
+     //   this.count = this.countFrom;
+    //    this.interval = setInterval((this.tick).bind(this), 1000)
     
-  }
+    
+
 
 function startGame(){
+    const targetDiv = document.getElementById("hidden");
+    targetDiv.style.display = "block";
 
    fetch("https://opentdb.com/api.php?amount=50&difficulty=hard&type=multiple")
    .then(response => response.json()) // or .json()
-   .then(data => {
+   .then(data =>  { 
+          
    
     
    
@@ -64,9 +78,7 @@ function startGame(){
          document.getElementById("answer2").innerHTML=' ' + quiz.incorrect_answers[0]+ ''
          document.getElementById("answer3").innerHTML=' ' + quiz.incorrect_answers[1]+ ''
          document.getElementById("answer4").innerHTML=' ' + quiz.incorrect_answers[2]+ ''
-         console.log(quiz)
-         
-         
+         console.log(quiz)          
     
     
    })
@@ -77,6 +89,19 @@ function startGame(){
 } 
 
 
+//let answers =  this.data.quiz.incorrect_answers, correct_answer;
+  
+// Randomly set location of correct answer
+//let rand = Math.floor(Math.random() * 4);
+//answers.splice(rand, 0, this.data.quiz.correct_answer);
+//answers = rand;
+// display question and options
+
+
+
+
+
+
 let correctButton = document.getElementById("answer1")
 correctButton.addEventListener("click", () => {
 alert("You are correct")
@@ -84,38 +109,30 @@ incrementScore();
 startGame()
 })
 
-let incorrectButton = document.getElementById("answer2")
-correctButton.addEventListener("click", () => {
-alert("You are correct")
-incrementScore();
-startGame()
-})
-correctButton.addEventListener("click", () => {
-alert("You are correct")
-incrementScore();
-startGame()
-})
-incorrectButton.addEventListener("click", () => {
+let incorrectButton1 = document.getElementById("answer2")
+incorrectButton1.addEventListener("click", () => {
 alert("You are incorrect")
-    incrementWrongAnswer();
+incrementWrongAnswer();
+startGame()
+})
+    
+let incorrectButton2 = document.getElementById("answer3")
+incorrectButton2.addEventListener("click", () => {    
+alert("You are incorrect")
+incrementWrongAnswer();
 startGame()
 })
 
-function checkAnswer(id) {
-    /*if(id=="answer1")
-     document.getElementById("answer1").style.backgroundColor ="green"; 
-    else (id !=="answer1")
-     document.getElementById("incorrect_answer").style.backgroundColor = "red";*/
-     
-    /* let isCorrect = userAnswer === correct_answer[0];
-     if (isCorrect) {
-        alert("Hey! You got it right! :D");
-        incrementScore();
-    } else {
-        alert(`Awwww.... you answered ${userAnswer}. The correct answer was ${correct_answer[0]}!`);
-        incrementWrongAnswer();
-    }*/
-}
+let incorrectButton3 = document.getElementById("answer4")
+incorrectButton3.addEventListener("click", () => {
+alert("You are incorrect")
+incrementWrongAnswer();
+startGame()
+})
+
+
+
+
 
 
 
@@ -133,6 +150,14 @@ function incrementWrongAnswer() {
     
 }
 
+function showRandomAnswers(){  
+    var correctAnswer = quiz.correct_answer;
+    var incorrectAnswer = quiz.incorrect_answers;
+    var optionsList = incorrectAnswer; 
+    
+    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+    console.log(correctAnswer);
+}
 
 
 
@@ -246,4 +271,22 @@ fetch("https://opentdb.com/api.php?amount=15&category=${questionId}&difficulty=$
     alert("Error getting data from OpenTDB API...");
   });
 }  */
- 
+/*(function(){
+   
+  
+    let timer = {
+      interval: 1000,
+      countFrom: 60, // second
+      count: this.countFrom,
+      progressView: document.getElementById('timer'),
+
+      restart: function() {
+        if (this.interval) {
+          clearInterval(this.interval);
+        }
+
+        this.count = this.countFrom;
+        this.interval = setInterval((this.tick).bind(this), 1000);
+      }
+    }
+})*/
