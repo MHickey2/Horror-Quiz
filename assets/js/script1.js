@@ -1,15 +1,23 @@
 
+var answers = [];
+var questions = [];
+var username;
 
-
-
+window.addEventListener('load', (event) => {
+    console.log('The page has fully loaded');
+    greeting();
+});
 
 //Username for the game
+function greeting(){
+    var username = prompt("Please enter your username: ");
+           if (username != null) {
+    document.getElementById("welcomeText").innerHTML = "Hello " + username + ", Welcome to my Quiz!";
+           }
+ 
+}
 
-/*var username = prompt("Please enter your username: ");
-            if (username != null) {
-        document.getElementById("welcome").innerText =
-        "Welcome, " + username + "!";
-    }*/
+
    
 //Select level of game to be played
   
@@ -20,13 +28,21 @@
             button.addEventListener ("click", function(){
                 if (this.getAttribute("data-type") === "selection1") {
                    
-                } else (this.getAttribute("data-type") === "selection1"); {
+                } else (this.getAttribute("data-type") === "selection2"); {
                     
         }
     })
 }
 
 let startButton = document.getElementById("start-btn")
+let option1 = document.getElementById("selection1")
+let option2 = document.getElementById("selection2")
+let option3 = document.getElementById("selection3")
+let option4 = document.getElementById("selection4")
+let option5 = document.getElementById("selection5")
+let option6 = document.getElementById("selection6")
+let option7 = document.getElementById("selection7")
+let option8 = document.getElementById("selection8")
 
 startButton.addEventListener("click", startGame)
 startButton.addEventListener("click", updateTimer)
@@ -65,21 +81,28 @@ function startGame(){
 
    fetch("https://opentdb.com/api.php?amount=50&difficulty=hard&type=multiple")
    .then(response => response.json()) // or .json()
-   .then(data =>  { 
-          
-   
+   .then(data =>  {  
+    
     
    
     const quiz = data.results[0];
          document.getElementById("category").innerHTML=' Category:' + quiz.category+ '' 
          document.getElementById("difficulty").innerHTML=' Difficulty: ' + quiz.difficulty+ ''
-         document.getElementById("question").innerHTML=' Question:' + quiz.question+ ''
-         document.getElementById("answer1").innerHTML= ' '+ quiz.correct_answer+ ''
-         document.getElementById("answer2").innerHTML=' ' + quiz.incorrect_answers[0]+ ''
-         document.getElementById("answer3").innerHTML=' ' + quiz.incorrect_answers[1]+ ''
-         document.getElementById("answer4").innerHTML=' ' + quiz.incorrect_answers[2]+ ''
-         console.log(quiz)          
+         document.getElementById("question").innerHTML=' Question:' + quiz.question+ '' 
+
+         answers = [quiz.correct_answer, quiz.incorrect_answers[0],quiz.incorrect_answers[1], quiz.incorrect_answers[2]]
+         answers.sort();
+         //Math.floor(Math.random(answers) * 4);
+         console.log(answers)
+         
+
+         
     
+         document.getElementById("answer1").innerHTML= ' '+ answers[0]+ ''
+         document.getElementById("answer2").innerHTML=' ' + answers[1]+ ''
+         document.getElementById("answer3").innerHTML=' ' + answers[2]+ ''
+         document.getElementById("answer4").innerHTML=' ' + answers[3]+ ''
+         console.log(quiz)             
     
    })
           .catch((e) => {
@@ -88,43 +111,64 @@ function startGame(){
 
 } 
 
-
-//let answers =  this.data.quiz.incorrect_answers, correct_answer;
+  // let answers =  this.data.quiz.incorrect_answers + this.data.quiz.correct_answer;
   
 // Randomly set location of correct answer
 //let rand = Math.floor(Math.random() * 4);
 //answers.splice(rand, 0, this.data.quiz.correct_answer);
 //answers = rand;
-// display question and options
 
 
+//answers = [quiz.correct_answer + quiz.incorrect_answers[0][1][2]];
+         //Math.floor(Math.random() * 4);
+         //console.log(answers)
+
+         //showNumberOfQuestions() {
+        // var questionlist = quiz.questions.length;
+         //console.log(questionlist);
+        // }
+
+         
 
 
+         
 
 
-let correctButton = document.getElementById("answer1")
-correctButton.addEventListener("click", () => {
-alert("You are correct")
-incrementScore();
+let button1 = document.getElementById("answer1")
+button1.addEventListener("click", () => {
+if (button1.value === data.correct_answer){
+    alert("you are correct")
+    incrementScore();
+} else {
+    alert("you are incorrect")
+    incrementWrongAnswer();
+}
 startGame()
 })
 
-let incorrectButton1 = document.getElementById("answer2")
-incorrectButton1.addEventListener("click", () => {
+/*let button1 = document.getElementById("answer1")
+button1.addEventListener("click", () => {
+alert("You are correct")
+incrementScore();
+startGame()
+})*/
+
+let button2 = document.getElementById("answer2")
+button2.addEventListener("click", () => {
 alert("You are incorrect")
 incrementWrongAnswer();
 startGame()
 })
     
-let incorrectButton2 = document.getElementById("answer3")
-incorrectButton2.addEventListener("click", () => {    
+let button3 = document.getElementById("answer3")
+button3.addEventListener("click", () => {    
 alert("You are incorrect")
 incrementWrongAnswer();
 startGame()
 })
 
-let incorrectButton3 = document.getElementById("answer4")
-incorrectButton3.addEventListener("click", () => {
+let button4 = document.getElementById("answer4")
+button4.addEventListener("click", () => {
 alert("You are incorrect")
 incrementWrongAnswer();
 startGame()
@@ -132,9 +176,16 @@ startGame()
 
 
 
+/*function correctness() {
+    if (this.button1.value === "correct_answer"){
+       alert("Correct!");
+   } else { 
+       alert("Incorrect")
+       
+ }*/
 
 
-
+//Scoring for the Game
 
 function incrementScore() {
 
@@ -151,12 +202,10 @@ function incrementWrongAnswer() {
 }
 
 function showRandomAnswers(){  
-    var correctAnswer = quiz.correct_answer;
-    var incorrectAnswer = quiz.incorrect_answers;
-    var optionsList = incorrectAnswer; 
+    answers = quiz.correct_answer + quiz.incorrect_answers
     
-    optionsList.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
-    console.log(correctAnswer);
+    answers.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
+    console.log(answers);
 }
 
 
