@@ -2,6 +2,9 @@
 var answers = [];
 var questions = [];
 var username;
+var questionNumber;
+var quiz;
+var rightAnswer;
 
 window.addEventListener('load', (event) => {
     console.log('The page has fully loaded');
@@ -21,7 +24,7 @@ function greeting(){
    
 //Select level of game to be played
   
-    let buttons = document.getElementsByTagName("button");
+  /*  let buttons = document.getElementsByTagName("button");
         
     
         for (let button of buttons) {
@@ -32,7 +35,7 @@ function greeting(){
                     
         }
     })
-}
+}*/
 
 let startButton = document.getElementById("start-btn")
 let option1 = document.getElementById("selection1")
@@ -62,6 +65,7 @@ function updateTimer() {
     timeLeft = timeLeft - 1;
     if(timeLeft >= 0)
     document.getElementById("time-keeper").innerHTML = timeLeft
+    
     //restartTimer()
 }
 
@@ -79,30 +83,37 @@ function startGame(){
     const targetDiv = document.getElementById("hidden");
     targetDiv.style.display = "block";
 
-   fetch("https://opentdb.com/api.php?amount=50&difficulty=hard&type=multiple")
-   .then(response => response.json()) // or .json()
+    let amount = document.getElementById('amountselected')
+
+   fetch(`https://opentdb.com/api.php?amount=10`)
+   .then(response => { return response.json();}) // or .json()
    .then(data =>  {  
     
-    
    
-    const quiz = data.results[0];
+   
+    quiz = data.results[0];
          document.getElementById("category").innerHTML=' Category:' + quiz.category+ '' 
          document.getElementById("difficulty").innerHTML=' Difficulty: ' + quiz.difficulty+ ''
-         document.getElementById("question").innerHTML=' Question:' + quiz.question+ '' 
+         document.getElementById("question").innerHTML= ' Question:' + quiz.question+ '' 
 
          answers = [quiz.correct_answer, quiz.incorrect_answers[0],quiz.incorrect_answers[1], quiz.incorrect_answers[2]]
          answers.sort();
          //Math.floor(Math.random(answers) * 4);
-         console.log(answers)
+         console.log("is this right", quiz.correct_answer)
          
-
-         
-    
+                 
          document.getElementById("answer1").innerHTML= ' '+ answers[0]+ ''
          document.getElementById("answer2").innerHTML=' ' + answers[1]+ ''
          document.getElementById("answer3").innerHTML=' ' + answers[2]+ ''
          document.getElementById("answer4").innerHTML=' ' + answers[3]+ ''
-         console.log(quiz)             
+         console.log(quiz)  
+         rightAnswer = quiz.correct_answer;
+         alert(quiz.correct_answer)
+         console.log(quiz.correct_answer)
+               
+         console.log(quiz.incorrect_answers[0])          
+         console.log(quiz.incorrect_answers[1])  
+         console.log(quiz.incorrect_answers[2])          
     
    })
           .catch((e) => {
@@ -111,47 +122,26 @@ function startGame(){
 
 } 
 
-  // let answers =  this.data.quiz.incorrect_answers + this.data.quiz.correct_answer;
-  
-// Randomly set location of correct answer
-//let rand = Math.floor(Math.random() * 4);
-//answers.splice(rand, 0, this.data.quiz.correct_answer);
-//answers = rand;
+ 
 
+ console.log('correct answer outside of function:', rightAnswer)
 
-//answers = [quiz.correct_answer + quiz.incorrect_answers[0][1][2]];
-         //Math.floor(Math.random() * 4);
-         //console.log(answers)
-
-         //showNumberOfQuestions() {
-        // var questionlist = quiz.questions.length;
-         //console.log(questionlist);
-        // }
-
-         
-
-
-         
-
-
-let button1 = document.getElementById("answer1")
-button1.addEventListener("click", () => {
-if (button1.value === data.correct_answer){
-    alert("you are correct")
+ let button1 = document.getElementById("answer1")
+    button1.addEventListener("click", () => {
+        
+if  (quiz.correct_answer === button1.value){
+//if (quiz.correct_answer === true){
+//if (quiz.correct_answer  === answer1.value){ 
+    alert("you are correct")       
     incrementScore();
 } else {
     alert("you are incorrect")
     incrementWrongAnswer();
 }
 startGame()
+
 })
 
-/*let button1 = document.getElementById("answer1")
-button1.addEventListener("click", () => {
-alert("You are correct")
-incrementScore();
-startGame()
-})*/
 
 let button2 = document.getElementById("answer2")
 button2.addEventListener("click", () => {
@@ -174,6 +164,23 @@ incrementWrongAnswer();
 startGame()
 })
 
+// let answers =  this.data.quiz.incorrect_answers + this.data.quiz.correct_answer;
+  
+// Randomly set location of correct answer
+//let rand = Math.floor(Math.random() * 4);
+//answers.splice(rand, 0, this.data.quiz.correct_answer);
+//answers = rand;
+
+
+//answers = [quiz.correct_answer + quiz.incorrect_answers[0][1][2]];
+         //Math.floor(Math.random() * 4);
+         //console.log(answers)
+
+        // showNumberOfQuestions() {
+        // var questionlist = quiz.length;
+        // console.log(questionlist);
+
+        // }
 
 
 /*function correctness() {
@@ -183,6 +190,15 @@ startGame()
        alert("Incorrect")
        
  }*/
+ (data.questions.length);
+ alert(data.question.length);
+
+function showQuestionNumber() {
+    let questionNumber = parseInt(document.getElementById("question").innerText);
+    document.getElementById("questionNumber").innerText = ++questionNumber;
+    console.log(questionNumber)
+}
+
 
 
 //Scoring for the Game
@@ -236,9 +252,9 @@ function showRandomAnswers(){
 
              
           }
-        
+    //tell the user how they did    
 
-          
+          document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
              
           
           

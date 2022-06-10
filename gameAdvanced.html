@@ -10,6 +10,7 @@
      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="jquery-1.10.2.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Advanced Game - Play</title>
@@ -28,8 +29,8 @@
         <h4>Hard level</h4>            
             <button data-type="selection5" id="gamechoice5">Lucky Dip</button>
             <button data-type="selection6" id="gamechoice6">Movies</button>
-            <button data-type="selection5" id="gamechoice5">Television</button>
-            <button data-type="selection6" id="gamechoice6">Music</button>
+            <button data-type="selection7" id="gamechoice5">Television</button>
+            <button data-type="selection8" id="gamechoice6">Music</button>
 </section>
     <br/>
 
@@ -53,7 +54,8 @@
   <br/>
   
     <div class="question-container">
-          <h3 id="question"></h3>
+      <p class="question"><span id="questionNumber"></span></p>      
+    <h3 id="question"></h3>
     </div>
 
   <div class="question-panel"> 
