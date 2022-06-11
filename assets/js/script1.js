@@ -1,24 +1,44 @@
 
 var answers = [];
 var questions = [];
-var username;
+var userName;
 var questionNumber;
 var quiz;
-var rightAnswer;
+
+
 
 window.addEventListener('load', (event) => {
     console.log('The page has fully loaded');
-    greeting();
+ //   greeting();
 });
+
+
+  
+
+  // Load welcome modal ONLY when the HTML has finished loading 
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", $("#welcome-modal").modal('show'));
+} else {
+    $("#welcome-modal").modal('show');
+}
 
 //Username for the game
 function greeting(){
-    var username = prompt("Please enter your username: ");
-           if (username != null) {
-    document.getElementById("welcomeText").innerHTML = "Hello " + username + ", Welcome to my Quiz!";
+
+    let userName = document.getElementById("userName");
+    userName.addEventListener("click", () => {
+               
+    //var username = prompt("Please enter your username: ");
+        //   if (username != null) {
+    document.getElementById("welcomeText").innerHTML = "Hello " + userName + ", Choose your Quiz needs!";
+   
            }
  
 }
+
+    
+
+
 
 
    
@@ -83,7 +103,7 @@ function startGame(){
     const targetDiv = document.getElementById("hidden");
     targetDiv.style.display = "block";
 
-    let amount = document.getElementById('amountselected')
+    //let amount = document.getElementById('amountselected')
 
    fetch(`https://opentdb.com/api.php?amount=10`)
    .then(response => { return response.json();}) // or .json()
@@ -98,44 +118,41 @@ function startGame(){
 
          answers = [quiz.correct_answer, quiz.incorrect_answers[0],quiz.incorrect_answers[1], quiz.incorrect_answers[2]]
          answers.sort();
-         //Math.floor(Math.random(answers) * 4);
-         console.log("is this right", quiz.correct_answer)
-         
+        
                  
          document.getElementById("answer1").innerHTML= ' '+ answers[0]+ ''
          document.getElementById("answer2").innerHTML=' ' + answers[1]+ ''
          document.getElementById("answer3").innerHTML=' ' + answers[2]+ ''
          document.getElementById("answer4").innerHTML=' ' + answers[3]+ ''
-         console.log(quiz)  
-         rightAnswer = quiz.correct_answer;
-         alert(quiz.correct_answer)
-         console.log(quiz.correct_answer)
-               
-         console.log(quiz.incorrect_answers[0])          
-         console.log(quiz.incorrect_answers[1])  
-         console.log(quiz.incorrect_answers[2])          
+         //console.log(quiz.correct_answer)               
+         //console.log(quiz.incorrect_answers[0])          
+         //console.log(quiz.incorrect_answers[1])  
+         //console.log(quiz.incorrect_answers[2]) 
+         alert(quiz.correct_answer)         
     
    })
           .catch((e) => {
               console.log("Error: ", e);
           })
 
-} 
+          
 
- 
+}
 
- console.log('correct answer outside of function:', rightAnswer)
+checkAnswers()
 
- let button1 = document.getElementById("answer1")
+function checkAnswers(){ 
+
+ let button1 = document.getElementById("answer1");
     button1.addEventListener("click", () => {
-        
+               
 if  (quiz.correct_answer === button1.value){
-//if (quiz.correct_answer === true){
-//if (quiz.correct_answer  === answer1.value){ 
-    alert("you are correct")       
+    alert("you are correct"); 
+    button1.style.background = "green";            
     incrementScore();
 } else {
-    alert("you are incorrect")
+    alert("you are incorrect");
+    button1.style.background = "red";
     incrementWrongAnswer();
 }
 startGame()
@@ -143,16 +160,16 @@ startGame()
 })
 
 
-let button2 = document.getElementById("answer2")
+/*let button2 = document.getElementById("answer2")
 button2.addEventListener("click", () => {
-alert("You are incorrect")
+
 incrementWrongAnswer();
 startGame()
 })
     
 let button3 = document.getElementById("answer3")
 button3.addEventListener("click", () => {    
-alert("You are incorrect")
+
 incrementWrongAnswer();
 startGame()
 })
@@ -162,7 +179,9 @@ button4.addEventListener("click", () => {
 alert("You are incorrect")
 incrementWrongAnswer();
 startGame()
-})
+})*/
+
+}
 
 // let answers =  this.data.quiz.incorrect_answers + this.data.quiz.correct_answer;
   
@@ -190,6 +209,7 @@ startGame()
        alert("Incorrect")
        
  }*/
+
  (data.questions.length);
  alert(data.question.length);
 
@@ -200,8 +220,8 @@ function showQuestionNumber() {
 }
 
 
+//Scoring for the Game, increments score when there is a correct answer from the question asked
 
-//Scoring for the Game
 
 function incrementScore() {
 
@@ -210,6 +230,9 @@ function incrementScore() {
 
 }
 
+//Scoring for the Game, increments wrongscore when there is an incorrect answer from the question asked
+
+
 function incrementWrongAnswer() {
 
     let oldScore = parseInt(document.getElementById("incorrect").innerText);
@@ -217,12 +240,13 @@ function incrementWrongAnswer() {
     
 }
 
-function showRandomAnswers(){  
+
+/*function showRandomAnswers(){  
     answers = quiz.correct_answer + quiz.incorrect_answers
     
     answers.splice(Math.floor(Math.random() * (incorrectAnswer.length + 1)), 0, correctAnswer);
     console.log(answers);
-}
+}*/
 
 
 
@@ -234,9 +258,9 @@ function showRandomAnswers(){
   })
   .catch((e) => {
     console.log("Error: ", e);
-})*/var quiz;
+})*/
 
-          function displayData() {
+          //function displayData() {
 
             //document.getElementById("category").innerHTML=' Category: ' + quiz.category +''
            // document.getElementById("difficulty").innerHTML=' Difficulty: ' + quiz.difficulty+ ''
@@ -251,10 +275,10 @@ function showRandomAnswers(){
             
 
              
-          }
+         // }
     //tell the user how they did    
 
-          document.getElementById("number_correct").innerHTML = "You got " + correct + " correct.";
+          document.getElementById("number_correct").innerHTML = "You got " + correct + " correct answers.";
              
           
           
@@ -355,3 +379,37 @@ fetch("https://opentdb.com/api.php?amount=15&category=${questionId}&difficulty=$
       }
     }
 })*/
+
+/*function checkAnswer(selected){
+    let button1 = document.getElementById("answer1")
+    button1.addEventListener("click", () => {
+
+    console.log("User selected: " + selected);
+    
+    console.log("The correct answer is: " + correctAnswer);
+    
+    if(selected == quiz.correct_answer){
+    
+      score++;
+    
+    console.log("You got it right!");
+    
+    element.style.background = "green";
+      
+      
+    
+    }
+    
+    else{
+    
+     
+    console.log("Sorry, that's incorrect");
+    
+    element.style.background = "red";
+    
+    score--; 
+    
+      }
+    })
+    
+    }*/

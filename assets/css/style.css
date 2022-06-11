@@ -13,7 +13,7 @@ body {
 }
 
 
-#welcomeText {
+#welcomeText, #helloText {
     color: white;
     text-align: center;
     color: white;

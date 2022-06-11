@@ -1,55 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <!-- font awesome and google fonts -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"
      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="jquery-1.10.2.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
-    <title>Quiz Page</title>
+    <title>Index - Play</title>
+    
 </head>
-
 <body>
-
-    <h2 id="welcomeText"></h2> 
+  <h2 id="welcomeText"></h2> 
+  <br/>
+  
+<!-- Welcome modal -->
+<div id="welcome-modal">
+  
+      <div class="modal-content">
+          <div class="modal-header">
+              <h4 class="modal-title">Welcome to Quiz-Lite</h4>
+          </div>
+          <div class="modal-body">
+              <p>Welcome to Quiz Lite.In a few simple steps you can customize the game to suit your needs. First choose your name<br> Good Luck!<br><br></p>
+              <br/>
+              <input type="text" id="username" placeholder="Enter Name : ">
+              <button onclick="userName" id="userName">Submit now</button>
+      </div>
+  
+<!--</div>h5>Select a difficulty level:</h5>
+</div>
+<div class="modal-footer">
+    <button type="button" id="easy-button" class="btn btn-secondary easy">EASY</button>
+    <button type="button" id="medium-button" class="btn btn-secondary medium">MEDIUM</button>
+    <button type="button" id="hard-button" class="btn btn-secondary hard">JEDI</button>
+</div>-->
+<!--<section class="gameSelectionChoices"></section>
+        <h4>Beginner level</h4>
+            <button data-type="selection1" id="gamechoice1">Lucky Dip</button>
+            <button data-type="selection2" id="gamechoice2">Movies</button>
+            <button data-type="selection3" id="gamechoice3">Television</button>
+            <button data-type="selection4" id="gamechoice4">Music</button>
+        <h4>Hard level</h4>            
+            <button data-type="selection5" id="gamechoice5">Lucky Dip</button>
+            <button data-type="selection6" id="gamechoice6">Movies</button>
+            <button data-type="selection7" id="gamechoice5">Television</button>
+            <button data-type="selection8" id="gamechoice6">Music</button>
+</section>-->
     <br/>
-    <h1 class="heading">Quiz - Lite</i></h1>
 
-    <p class="center-message">Are you a whiz with trivia? Do you have a mind for facts and fun tidbit
-        of knowledge, why not test your brainpower in my Quiz, Choose your difficulty level, pick your topice
-        and fire away, what have you got to lose, beside your dignity!
-    </p>
-
-    <div class="user-name">        
+    
+    <div class="controls">
+        <btn id="start-btn" class="start-btn" onclick="startGame()" data-type="start">Start</div>
+       <!--<btn id="next-btn" class="next-btn hide">Next</div>-->
     </div>
 
-    <div class="game-area">
 
-        <div class="game-level-buttons">
-            <a clss="btn" data-type="selection1" href="/game.html" id="beginner-button">Beginner Game</a>
-            <a class="btn" data-type="selection2" href="/gameAdvanced.html" id="beginner-button">Advanced Game</a>
-            
-            
-            <br>
-            
-        </div>
+
+    <div id="hidden">
+     <p><i class="fa-solid fa-timer"></i>You have: <span id="time-keeper"></span> seconds remaining!</p>
+     
+     
+
+  <div class="informationForQuestion">
+  <p id="category" class="center"></p>  
+  <p id="difficulty" class="center"></p>
+  </div>
+  <br/>
+  
+    <div class="question-container">
+      <p class="question"><span id="questionNumber"></span></p>      
+    <h3 id="question"></h3>
     </div>
 
-    
-
-    
-
-
-    <script src="assets/js/script1.js"></script>
-    
+  <div class="question-panel"> 
+    <div class="main-container"> 
+  <button id="answer1" class="choice-container"></button>        
+  <button id="answer2" class="choice-container"></button>
+  </div>
+  <div class="main-container">
+  <button id="answer3" class="choice-container"></button>
+  <button id="answer4" class="choice-container"></button>
+  </div> 
+  </div>
 
   
-</body>
 
+  <div class="score-area">
+    <p class="scores">Correct Answers <span id="score">0</span></p>
+    <p class="scores">Incorrect Answers <span id="incorrect">0</span></p>    
+  </div>
+
+  <div id="number_incorrect">
+
+  </div>
+
+
+</div>
+  
+
+    <script src="assets/js/script1.js"></script>
+</body>
 </html>
